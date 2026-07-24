@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The boring automation that halved a daily process · Zeren Lelaona</title>
+<meta name="description" content="How an Excel proof of concept, one SQL join, and a Python tolerance check halved a daily fund-price reconciliation. Sequencing beats sophistication.">
+<link rel="canonical" href="https://zerenlelaona.github.io/note-reconciliation.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="The boring automation that halved a daily process">
+<meta property="og:description" content="An Excel proof of concept, one SQL join, and a Python tolerance check. Sequencing beats sophistication.">
+<meta property="og:url" content="https://zerenlelaona.github.io/note-reconciliation.html">
+<meta property="og:image" content="https://zerenlelaona.github.io/headshot.jpg">
+<meta name="twitter:card" content="summary">
+
+<meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12161c" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f6f5c'/%3E%3Ctext x='32' y='42' font-family='-apple-system,Segoe UI,Arial,sans-serif' font-size='28' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EZL%3C/text%3E%3C/svg%3E">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The boring automation that halved a daily process",
+  "author": { "@type": "Person", "name": "Zeren Lelaona", "url": "https://zerenlelaona.github.io/" },
+  "about": ["Reconciliation", "Process automation", "Python", "SQL", "Fund operations"]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --ink: #1c2430;
+    --ink-soft: #57606e;
+    --accent: #0f6f5c;
+    --accent-soft: #e3f0ec;
+    --line: #e6e3dc;
+    --nav-bg: rgba(251, 250, 247, 0.88);
+    --serif: "Iowan Old Style", "Palatino", Palatino, Georgia, "Times New Roman", serif;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12161c;
+      --surface: #1a2028;
+      --ink: #e8e9eb;
+      --ink-soft: #a2abb6;
+      --accent: #4fc3a8;
+      --accent-soft: #17332c;
+      --line: #2a323d;
+      --nav-bg: rgba(18, 22, 28, 0.88);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 1.4rem; }
+
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--nav-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 680px; margin: 0 auto; padding: 0.65rem 1.4rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  .nav-logo { font-weight: 800; font-size: 0.95rem; color: var(--accent); text-decoration: none; }
+  .nav-back { font-size: 0.85rem; font-weight: 550; color: var(--ink-soft); text-decoration: none; }
+  .nav-back:hover { color: var(--accent); }
+
+  article { padding: 3.2rem 0 2rem; }
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 1.1rem;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  .meta {
+    font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft);
+    margin-bottom: 2.2rem;
+  }
+  article p { margin-bottom: 1.2rem; font-size: 1.04rem; }
+  article p strong { font-weight: 650; }
+
+  .facts {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem;
+    margin: 0 0 2.2rem;
+  }
+  @media (max-width: 560px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+  .fact {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 0.8rem 0.9rem; text-align: center;
+  }
+  .fact .n { font-family: var(--mono); font-size: 1.15rem; font-weight: 700; color: var(--accent); white-space: nowrap; }
+  .fact .l { font-size: 0.7rem; color: var(--ink-soft); line-height: 1.4; margin-top: 0.15rem; }
+
+  .marker {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent); font-weight: 700;
+    display: block; margin: 2.2rem 0 0.7rem;
+    padding-top: 1.4rem; border-top: 1px solid var(--line);
+  }
+
+  .fig {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 1.2rem 1.3rem 0.9rem; margin: 1.8rem 0;
+  }
+  .fig-title {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-soft); font-weight: 700; margin-bottom: 0.9rem;
+  }
+  .fig svg { width: 100%; height: auto; display: block; }
+  .fig .bar-cred { fill: var(--line); }
+  .fig .bar-sh { fill: var(--accent); }
+  .fig .lbl { fill: var(--ink); font-size: 13px; font-weight: 600; font-family: -apple-system, "Segoe UI", Arial, sans-serif; }
+  .fig .sub { fill: var(--ink-soft); font-size: 11.5px; font-family: -apple-system, "Segoe UI", Arial, sans-serif; }
+  .fig .verdict { font-size: 13px; font-weight: 700; font-family: ui-monospace, Menlo, monospace; }
+  .fig .v-yes { fill: var(--accent); }
+  .fig .v-no { fill: var(--ink-soft); }
+  .fig-cap { font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.7rem; line-height: 1.5; }
+  .pull {
+    border-left: 3px solid var(--accent);
+    padding: 0.2rem 0 0.2rem 1.2rem;
+    margin: 1.8rem 0;
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .src {
+    margin-top: 2.4rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.1rem 1.3rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+  .src a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .src a:hover { text-decoration: underline; }
+
+  footer { border-top: 1px solid var(--line); padding: 1.6rem 0 3rem; margin-top: 2rem; }
+  .foot-row { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: 0.85rem; color: var(--ink-soft); }
+  .foot-row a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .foot-row a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Site">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html" aria-label="Zeren Lelaona, home">ZL</a>
+    <a class="nav-back" href="index.html">← Back to the research note</a>
+  </div>
+</nav>
+
+<div class="wrap">
+<article>
+  <span class="eyebrow">Notes from the desk · 02</span>
+  <h1>The boring automation that halved a daily process</h1>
+  <p class="meta">ZEREN LELAONA · AMSTERDAM · 3-MINUTE READ · FROM MY TIME AT GOLDMAN SACHS ASSET MANAGEMENT</p>
+
+  <div class="facts" aria-label="Project at a glance">
+    <div class="fact"><div class="n">&minus;50%</div><div class="l">processing time,<br>from the Excel PoC alone</div></div>
+    <div class="fact"><div class="n">~12</div><div class="l">pricing breaks<br>surfaced</div></div>
+    <div class="fact"><div class="n">2</div><div class="l">join keys:<br>ISIN + fund code</div></div>
+    <div class="fact"><div class="n">1</div><div class="l">manual written<br>at handover</div></div>
+  </div>
+
+  <p>
+    The most useful automation I have built was not clever. It was boring, and that is exactly why
+    it worked. At Goldman Sachs Asset Management our team ran a daily fund-price reconciliation:
+    two data sources, thousands of rows, checked by hand. Manual, repetitive, slow. That was time
+    the team could have spent on the exceptions that actually needed judgment.
+  </p>
+
+  <span class="marker">Step 01 · Prove it cheap</span>
+  <p>
+    The real insight was not technical. It was noticing that a process everyone accepted as manual
+    did not have to be. Step one was not code: I rebuilt the check in Excel first, the tool everyone
+    on the desk already trusted. <strong>That proof of concept alone halved the processing
+    time.</strong> More importantly, it bought something no pitch deck can buy: the team's
+    confidence that the idea worked, using numbers they could verify themselves.
+  </p>
+
+  <span class="marker">Step 02 · Build it properly</span>
+  <p>
+    Version two replaced the manual matching entirely. SQL pulls join the two sources on
+    <strong>ISIN and fund code</strong>; Python compares the prices and flags any break that
+    exceeds a basis-point tolerance. Nobody scans thousands of rows anymore. The reviewer starts
+    from a short list of flagged exceptions, and the judgment stays where it belongs: with a human.
+  </p>
+
+  <div class="fig">
+    <div class="fig-title">Fig. 1 · The pipeline (conceptual)</div>
+    <svg viewBox="0 0 690 190" xmlns="http://www.w3.org/2000/svg" role="img"
+         aria-label="Pipeline diagram: two price sources are joined by SQL on ISIN and fund code, Python checks differences against a basis-point tolerance, matches are done automatically and only breaks go to human review.">
+      <rect x="0" y="10" width="150" height="40" rx="8" class="bar-cred"/>
+      <text x="75" y="34" text-anchor="middle" class="lbl">Price source A</text>
+      <rect x="0" y="66" width="150" height="40" rx="8" class="bar-cred"/>
+      <text x="75" y="90" text-anchor="middle" class="lbl">Price source B</text>
+
+      <path d="M150 30 L 200 30 L 200 58" fill="none" stroke="var(--ink-soft)" stroke-width="1.6"/>
+      <path d="M150 86 L 200 86 L 200 74 M 200 58 L 200 74" fill="none" stroke="var(--ink-soft)" stroke-width="1.6"/>
+      <path d="M200 66 L 232 66" fill="none" stroke="var(--ink-soft)" stroke-width="1.6" marker-end="none"/>
+
+      <rect x="232" y="40" width="140" height="52" rx="8" class="bar-sh"/>
+      <text x="302" y="62" text-anchor="middle" class="lbl" style="fill:#fff">SQL join</text>
+      <text x="302" y="80" text-anchor="middle" class="sub" style="fill:#fff">ISIN + fund code</text>
+
+      <path d="M372 66 L 410 66" fill="none" stroke="var(--ink-soft)" stroke-width="1.6"/>
+
+      <rect x="410" y="40" width="140" height="52" rx="8" class="bar-sh"/>
+      <text x="480" y="62" text-anchor="middle" class="lbl" style="fill:#fff">Python check</text>
+      <text x="480" y="80" text-anchor="middle" class="sub" style="fill:#fff">vs bps tolerance</text>
+
+      <path d="M480 92 L 480 118 L 380 118 L 380 138" fill="none" stroke="var(--ink-soft)" stroke-width="1.6"/>
+      <path d="M480 92 L 480 118 L 580 118 L 580 138" fill="none" stroke="var(--ink-soft)" stroke-width="1.6"/>
+
+      <text x="380" y="158" text-anchor="middle" class="verdict v-yes">within tolerance ✓ done</text>
+      <text x="580" y="158" text-anchor="middle" class="verdict v-no">break ✗ human review</text>
+    </svg>
+    <p class="fig-cap">Illustrative. The machine does the scanning; people keep the judgment.
+    A public demo repo with synthetic data is in the works.</p>
+  </div>
+
+  <span class="marker">Step 03 · What it caught</span>
+  <p>
+    The automation surfaced around <strong>a dozen pricing breaks</strong> that manual scanning
+    could plausibly have missed. Each one was a small data-quality story: a stale price here, a
+    mismatched identifier there. None of them was dramatic on its own. All of them were exactly the
+    kind of thing you want a machine to find before a client does.
+  </p>
+
+  <span class="marker">Step 04 · Make it outlive you</span>
+  <p>
+    Before I left, I wrote the manual. Automation that dies when its author leaves is not
+    automation; it is a stunt. The process, the logic, and the failure modes are documented, and
+    the team could run it without me from day one.
+  </p>
+
+  <p class="pull">
+    It was not complicated. Sequencing beats sophistication.
+  </p>
+
+  <span class="marker">The lesson</span>
+  <p>
+    Prove it cheap, in a tool people already trust. Build it properly, once the idea has earned
+    the investment. Write it down, so it survives you. Most process automation fails at step one,
+    not because the code is hard, but because nobody bothered to make the case in a language the
+    team already believed.
+  </p>
+
+  <div class="src">
+    From my time in Fund Management at Goldman Sachs Asset Management, The Hague (2022&ndash;2023).
+    Concept illustrated with synthetic examples; no employer code or data. Want the longer story?
+    <a href="mailto:zerenlelaona99@gmail.com">Email me</a>.
+  </div>
+</article>
+
+<footer>
+  <div class="foot-row">
+    <a href="index.html">← zerenlelaona.github.io</a>
+    <span>© 2026 Zeren Lelaona</span>
+  </div>
+</footer>
+</div>
+
+</body>
+</html>

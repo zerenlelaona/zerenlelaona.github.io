@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What 2,355 balance sheets taught me about debt · Zeren Lelaona</title>
+<meta name="description" content="Debt overhang isn't textbook trivia: ten years of European data show leverage quietly deciding what companies build next. Notes from my MSc thesis at RSM.">
+<link rel="canonical" href="https://zerenlelaona.github.io/note-debt-overhang.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="What 2,355 balance sheets taught me about debt">
+<meta property="og:description" content="Debt overhang isn't textbook trivia: ten years of European data show leverage quietly deciding what companies build next.">
+<meta property="og:url" content="https://zerenlelaona.github.io/note-debt-overhang.html">
+<meta property="og:image" content="https://zerenlelaona.github.io/headshot.jpg">
+<meta name="twitter:card" content="summary">
+
+<meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12161c" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f6f5c'/%3E%3Ctext x='32' y='42' font-family='-apple-system,Segoe UI,Arial,sans-serif' font-size='28' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EZL%3C/text%3E%3C/svg%3E">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What 2,355 balance sheets taught me about debt",
+  "author": { "@type": "Person", "name": "Zeren Lelaona", "url": "https://zerenlelaona.github.io/" },
+  "about": ["Capital structure", "Debt overhang", "Corporate investment", "Valuation"]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --ink: #1c2430;
+    --ink-soft: #57606e;
+    --accent: #0f6f5c;
+    --accent-soft: #e3f0ec;
+    --line: #e6e3dc;
+    --nav-bg: rgba(251, 250, 247, 0.88);
+    --serif: "Iowan Old Style", "Palatino", Palatino, Georgia, "Times New Roman", serif;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12161c;
+      --surface: #1a2028;
+      --ink: #e8e9eb;
+      --ink-soft: #a2abb6;
+      --accent: #4fc3a8;
+      --accent-soft: #17332c;
+      --line: #2a323d;
+      --nav-bg: rgba(18, 22, 28, 0.88);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 1.4rem; }
+
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--nav-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 680px; margin: 0 auto; padding: 0.65rem 1.4rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  .nav-logo { font-weight: 800; font-size: 0.95rem; color: var(--accent); text-decoration: none; }
+  .nav-back { font-size: 0.85rem; font-weight: 550; color: var(--ink-soft); text-decoration: none; }
+  .nav-back:hover { color: var(--accent); }
+
+  article { padding: 3.2rem 0 2rem; }
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 1.1rem;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  .meta {
+    font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft);
+    margin-bottom: 2.2rem;
+  }
+  article p { margin-bottom: 1.2rem; font-size: 1.04rem; }
+  article p strong { font-weight: 650; }
+
+  .facts {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem;
+    margin: 0 0 2.2rem;
+  }
+  @media (max-width: 560px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+  .fact {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 0.8rem 0.9rem; text-align: center;
+  }
+  .fact .n { font-family: var(--mono); font-size: 1.15rem; font-weight: 700; color: var(--accent); white-space: nowrap; }
+  .fact .l { font-size: 0.7rem; color: var(--ink-soft); line-height: 1.4; margin-top: 0.15rem; }
+
+  .marker {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent); font-weight: 700;
+    display: block; margin: 2.2rem 0 0.7rem;
+    padding-top: 1.4rem; border-top: 1px solid var(--line);
+  }
+
+  .fig {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 1.2rem 1.3rem 0.9rem; margin: 1.8rem 0;
+  }
+  .fig-title {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-soft); font-weight: 700; margin-bottom: 0.9rem;
+  }
+  .fig svg { width: 100%; height: auto; display: block; }
+  .fig .bar-cred { fill: var(--line); }
+  .fig .bar-sh { fill: var(--accent); }
+  .fig .lbl { fill: var(--ink); font-size: 13px; font-weight: 600; font-family: -apple-system, "Segoe UI", Arial, sans-serif; }
+  .fig .sub { fill: var(--ink-soft); font-size: 11.5px; font-family: -apple-system, "Segoe UI", Arial, sans-serif; }
+  .fig .verdict { font-size: 13px; font-weight: 700; font-family: ui-monospace, Menlo, monospace; }
+  .fig .v-yes { fill: var(--accent); }
+  .fig .v-no { fill: var(--ink-soft); }
+  .fig-cap { font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.7rem; line-height: 1.5; }
+  .pull {
+    border-left: 3px solid var(--accent);
+    padding: 0.2rem 0 0.2rem 1.2rem;
+    margin: 1.8rem 0;
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .src {
+    margin-top: 2.4rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.1rem 1.3rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+  .src a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .src a:hover { text-decoration: underline; }
+
+  footer { border-top: 1px solid var(--line); padding: 1.6rem 0 3rem; margin-top: 2rem; }
+  .foot-row { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: 0.85rem; color: var(--ink-soft); }
+  .foot-row a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .foot-row a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Site">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html" aria-label="Zeren Lelaona, home">ZL</a>
+    <a class="nav-back" href="index.html">← Back to the research note</a>
+  </div>
+</nav>
+
+<div class="wrap">
+<article>
+  <span class="eyebrow">Notes from the desk · 01</span>
+  <h1>What 2,355 balance sheets taught me about debt</h1>
+  <p class="meta">ZEREN LELAONA · AMSTERDAM · 4-MINUTE READ · FROM MY MSC THESIS AT RSM</p>
+
+  <div class="facts" aria-label="Study at a glance">
+    <div class="fact"><div class="n">2,355</div><div class="l">listed European<br>firms analysed</div></div>
+    <div class="fact"><div class="n">10 yrs</div><div class="l">panel data,<br>2014–2024</div></div>
+    <div class="fact"><div class="n">2</div><div class="l">findings that<br>changed my models</div></div>
+    <div class="fact"><div class="n">8.5/10</div><div class="l">thesis grade,<br>RSM Honours</div></div>
+  </div>
+
+  <p>
+    Here's the thing I took away from a year of thesis work: a company's capital structure doesn't
+    just sit on the right-hand side of the balance sheet: it quietly decides what the company builds
+    next. For my MSc thesis at Rotterdam School of Management I analysed <strong>2,355 listed European
+    firms across 2014–2024</strong>, asking one question: how does capital structure influence
+    corporate investment decisions?
+  </p>
+
+  <span class="marker">Finding 01 · Debt overhang is real</span>
+  <p>
+    The clearest result: <strong>firms carrying higher book leverage invest materially less in
+    CapEx</strong>. Economists call this debt overhang, an idea Stewart Myers formalised back in
+    1977. The plain version: when a company already owes a lot, part of the payoff from every new
+    project effectively belongs to existing creditors before shareholders see a cent. So owners and
+    managers quietly shelve projects that a debt-free version of the same company would fund. The
+    textbook says this should happen. Ten years of European data say it does.
+  </p>
+
+  <div class="fig">
+    <div class="fig-title">Fig. 1 · Why leveraged firms shelve good projects (conceptual)</div>
+    <svg viewBox="0 0 640 210" xmlns="http://www.w3.org/2000/svg" role="img"
+         aria-label="Conceptual diagram: at low leverage most of a new project's payoff is left for shareholders, so the firm invests; at high leverage most of the payoff is effectively claimed by existing creditors, so the project is shelved.">
+      <text x="0" y="18" class="lbl">Low leverage</text>
+      <text x="0" y="36" class="sub">payoff from a new project</text>
+      <rect x="0" y="46" width="110" height="30" rx="5" class="bar-cred"/>
+      <rect x="116" y="46" width="384" height="30" rx="5" class="bar-sh"/>
+      <text x="520" y="66" class="verdict v-yes">→ invests ✓</text>
+
+      <text x="0" y="118" class="lbl">High leverage</text>
+      <text x="0" y="136" class="sub">same project, same payoff</text>
+      <rect x="0" y="146" width="384" height="30" rx="5" class="bar-cred"/>
+      <rect x="390" y="146" width="110" height="30" rx="5" class="bar-sh"/>
+      <text x="520" y="166" class="verdict v-no">→ shelved ✗</text>
+
+      <rect x="0" y="196" width="12" height="12" rx="3" class="bar-cred"/>
+      <text x="18" y="206" class="sub">effectively claimed by existing creditors</text>
+      <rect x="290" y="196" width="12" height="12" rx="3" class="bar-sh"/>
+      <text x="308" y="206" class="sub">left for shareholders</text>
+    </svg>
+    <p class="fig-cap">Illustrative, not to scale: the more of a project's payoff that existing debt
+    effectively claims, the weaker the owners' incentive to fund it. That is why leveraged firms
+    systematically underinvest.</p>
+  </div>
+
+  <p class="pull">
+    The textbook says it should happen. Ten years of European data say it does.
+  </p>
+
+  <span class="marker">Finding 02 · R&amp;D plays by different rules</span>
+  <p>
+    The result that surprised me was R&amp;D. I expected the financing mix to drive it the same way.
+    It doesn't. <strong>R&amp;D tracks cash-flow volatility far more than leverage</strong>: firms
+    protect their research pipeline when cash flows are steady and cut it when they turn jumpy, almost
+    regardless of how the balance sheet is financed. Equity issuance alone doesn't lift R&amp;D
+    either: companies issue shares when the market is receptive, not when the lab needs money. The
+    timing of the raise and the timing of the investment are two different decisions.
+  </p>
+
+  <span class="marker">The method · Untangling the chicken and egg</span>
+  <p>
+    The part of the thesis I am genuinely proud of is the estimation choice. Leverage and
+    investment cause each other: how much a firm borrows shapes what it can build, but what it
+    plans to build also shapes how much it borrows. Run a naive regression on that and you cannot
+    tell which direction you are measuring. It is a classic chicken-and-egg problem, and it is the
+    reason "more debt, less CapEx" could just as easily be "less CapEx, so different debt".
+    I estimated the model with <strong>GMM (generalised method of moments)</strong>, the standard
+    tool for dynamic panels with exactly this kind of two-way causality, so the leverage effect I
+    report is measured against that problem rather than pretending it does not exist.
+  </p>
+
+  <span class="marker">So what · For anyone who builds models</span>
+  <p>
+    Why does this matter outside a university library? If you value companies, it changes where
+    capital structure lives in your model. <strong>Leverage isn't just a WACC input below the line.
+    It belongs in the forecast itself.</strong> A heavily levered target won't deliver the CapEx path
+    of its unlevered peer, and if your projection assumes it will, the DCF is quietly optimistic. The
+    same logic reaches FP&amp;A: when cash flows are volatile, defending the R&amp;D budget is a real
+    annual fight, not a given, and a good analyst plans for that fight.
+  </p>
+
+  <span class="marker">The fine print</span>
+  <p>
+    The usual honesty applies. Even with GMM doing the heavy lifting on causality, I'd call these
+    strong, consistent patterns rather than court-proof causation, and book leverage is a blunt
+    measure. But the pattern holds across ten years and more than two thousand firms, which is a
+    stronger footing than most modelling assumptions ever get.
+  </p>
+
+  <span class="marker">The lesson</span>
+  <p>
+    The lesson I carry into every valuation since: <strong>read the balance sheet as a constraint on
+    the future, not a record of the past.</strong> The debt a company carries today is already
+    deciding what it won't build tomorrow.
+  </p>
+
+  <div class="src">
+    Based on my MSc Finance &amp; Investments thesis at Rotterdam School of Management (Honours
+    Programme), graded 8.5/10. Full thesis available on request:
+    <a href="mailto:zerenlelaona99@gmail.com">email me</a>.
+  </div>
+</article>
+
+<footer>
+  <div class="foot-row">
+    <a href="index.html">← zerenlelaona.github.io</a>
+    <span>© 2026 Zeren Lelaona</span>
+  </div>
+</footer>
+</div>
+
+</body>
+</html>
