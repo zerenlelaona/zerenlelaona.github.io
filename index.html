@@ -603,6 +603,18 @@
     <div class="xp">
       <div class="job">
         <div class="job-head">
+          <h3>Finance and Commercial Analysis · <span class="org">Independent Projects</span></h3>
+          <span class="when">Apr 2026–Present</span>
+        </div>
+        <p>
+          Amsterdam, Netherlands. Finance and commercial support to a small hospitality business in
+          rural Spain, plus self-directed data and tooling projects. I produce the reporting the
+          owner runs the season on, model the pricing, and build the systems underneath it.
+        </p>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
           <h3>Investment Banking Analyst (off-cycle) · <span class="org">ABN AMRO</span></h3>
           <span class="when">Jun–Oct 2025</span>
         </div>
@@ -616,7 +628,7 @@
 
       <div class="job">
         <div class="job-head">
-          <h3>Fund Management · <span class="org">Goldman Sachs Asset Management</span></h3>
+          <h3>Fund Controller · <span class="org">Goldman Sachs Asset Management</span></h3>
           <span class="when">Oct 2022–Jul 2023</span>
         </div>
         <p>
@@ -654,6 +666,100 @@
   <section id="work" class="reveal">
     <span class="sec-tag">03 · Case studies</span>
     <h2>Selected work, in detail</h2>
+
+    <div class="case">
+      <div class="case-top">
+        <h3>Running the numbers for a five-room hospitality business</h3>
+        <span class="case-org">What a finance function looks like when it is one person</span>
+      </div>
+      <div class="case-stats">
+        <span class="case-stat">Five rooms</span>
+        <span class="case-stat">Rural Spain</span>
+        <span class="case-stat">Direct booking channel</span>
+      </div>
+      <dl>
+        <dt>The situation</dt>
+        <dd>A five-room hospitality business in rural Spain, effectively fully booked through the summer
+        and thin for the rest of the year. All of its bookings came through a third-party platform. The
+        platform charges the owner a commission on each booking, and separately charges the guest a fee
+        of its own on top of the nightly price, so the listed price a guest sees is meaningfully higher
+        than what the owner receives.</dd>
+        <dt>What I built</dt>
+        <dd>A direct booking and payment channel on the business's own website, so guests can book and
+        pay without going through the platform. I built the booking and payment flow; a developer worked
+        on the wider site.</dd>
+        <dt>The pricing question that came with it</dt>
+        <dd>Moving demand to a direct channel is a pricing problem before it is a technology problem.
+        Because the platform's guest fee disappears on a direct booking, the same room can be cheaper to
+        the guest at no cost to the owner. That is the room I used to fund a direct-booking discount. I
+        modelled the rate structure around it: seasonal tiers, higher in summer and lower in winter,
+        two-night minimum stays, and bundles for booking further ahead. The owner and I agreed the
+        structure together and it is what the business now uses.</dd>
+        <dt>The reporting</dt>
+        <dd>I produce the regular reporting the owner uses to run the season: occupancy, revenue per
+        booking, seasonality, and what each booking channel costs. I am currently building the forward
+        revenue and occupancy plan and the marketing budget that sits behind it.</dd>
+        <dt>The decision that changed</dt>
+        <dd>Low-season occupancy is the real problem, not summer. I looked at who was actually in the
+        area outside the peak months and cycling visitors were the obvious segment: the terrain suits it
+        and the season is different from the beach season. I proposed treating marketing spend as a cost
+        per booking acquired rather than as general awareness spending, with a payback we could check. On
+        that basis the owner moved budget away from local advertising and towards digital and the cycling
+        audience.</dd>
+        <dt>What I am still working on</dt>
+        <dd>The forward plan for the coming season, and moving payment processing to a cheaper provider,
+        which the owner has agreed to but which is not finished.</dd>
+      </dl>
+      <details>
+        <summary>What I took from it</summary>
+        <p>Every question turned out to be the same question in different clothes: what does this
+        actually cost us, and what do we get back. It is the smallest business I have worked with and the
+        one where the link between an analysis and a decision is shortest.</p>
+      </details>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <h3>What each sales channel actually costs</h3>
+        <span class="case-org">A cost model over an 11,000-row dataset</span>
+      </div>
+      <div class="case-stats">
+        <span class="case-stat">11,000 rows</span>
+      </div>
+      <dl>
+        <dt>The question</dt>
+        <dd>I built a model over an 11,000-row dataset to answer a question that sounds simple and is
+        not: which sales channels actually make money once every cost of serving them is counted, not
+        just the obvious ones.</dd>
+        <dt>What the model does</dt>
+        <dd>It allocates costs out to each channel rather than leaving them in one blended pile,
+        separates the costs that are fixed by how the business is set up from the ones a manager can
+        change month to month, tracks performance against targets, projects a run rate forward, and flags
+        data that looks wrong before it reaches the output.</dd>
+      </dl>
+      <details>
+        <summary>The part I would defend hardest</summary>
+        <p>The part I would defend hardest is the last one. A model nobody trusts gets ignored, and the
+        fastest way to lose trust is one wrong number that someone spots before you do.</p>
+      </details>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <h3>Matching vacancies to the Dutch sponsor register</h3>
+        <span class="case-org">Live web app</span>
+      </div>
+      <dl>
+        <dt>What it is</dt>
+        <dd>A live web app that checks job vacancies against the Dutch immigration service's register of
+        recognised sponsors. The register is published as a large HTML page rather than a clean dataset,
+        and employer names on it rarely match the names companies use in job adverts, so most of the work
+        was in the matching rather than the interface.</dd>
+        <dt>Why</dt>
+        <dd>Built because I needed it, and it turned out other people did too.</dd>
+      </dl>
+      <a class="note-link" href="https://zerenlelaona.github.io/vaj">Open the app →</a>
+    </div>
 
     <div class="case">
       <div class="case-top">
@@ -781,7 +887,7 @@
         <div class="what">
           <span class="yr-inline">2022</span>
           <h3><span class="place">The Hague, NL</span> · Goldman Sachs Asset Management</h3>
-          <p>Fund management: NAV controls, exception resolution, and the Python + SQL automation that halved a daily process.</p>
+          <p>Fund controller: NAV controls, exception resolution, and the Python + SQL automation that halved a daily process.</p>
         </div>
       </div>
       <div class="stop">
