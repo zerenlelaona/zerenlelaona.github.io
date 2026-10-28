@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zeren Lelaona · Finance Analyst, Amsterdam</title>
-<meta name="description" content="Zeren Lelaona, finance analyst in Amsterdam. Investment analysis, valuation, fund finance, and data-driven finance, with a Python/SQL automation core. Experience at Goldman Sachs Asset Management and ABN AMRO.">
+<meta name="description" content="Zeren Lelaona, Fleet Analyst at Tesla in Amsterdam. Investment analysis, valuation, fund finance, and data-driven finance, with a Python/SQL automation core. Previously at Goldman Sachs Asset Management and ABN AMRO.">
 <link rel="canonical" href="https://zerenlelaona.github.io/">
 
 <!-- Social sharing (LinkedIn, WhatsApp, iMessage previews) -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Zeren Lelaona · Finance Analyst, Amsterdam">
-<meta property="og:description" content="Initiating coverage: investment, valuation, fund finance & data-driven finance analyst with a Python/SQL automation core. GSAM · ABN AMRO · RSM Honours. Rating: strong hire.">
+<meta property="og:description" content="Initiating coverage: investment, valuation, fund finance & data-driven finance analyst with a Python/SQL automation core. Tesla · GSAM · ABN AMRO · RSM Honours. Rating: strong hire.">
 <meta property="og:url" content="https://zerenlelaona.github.io/">
 <meta property="og:image" content="https://zerenlelaona.github.io/headshot.jpg">
 <meta name="twitter:card" content="summary">
@@ -18,9 +18,8 @@
 <meta name="twitter:description" content="Initiating coverage: investment, valuation, fund finance & data-driven finance analyst with a Python/SQL automation core.">
 <meta name="twitter:image" content="https://zerenlelaona.github.io/headshot.jpg">
 
-<meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#12161c" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f6f5c'/%3E%3Ctext x='32' y='42' font-family='-apple-system,Segoe UI,Arial,sans-serif' font-size='28' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EZL%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171a20'/%3E%3Ctext x='32' y='42' font-family='-apple-system,Segoe UI,Arial,sans-serif' font-size='28' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EZL%3C/text%3E%3C/svg%3E">
 
 <!-- Structured data: helps Google build a result for "Zeren Lelaona" -->
 <script type="application/ld+json">
@@ -28,7 +27,8 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Zeren Lelaona",
-  "jobTitle": "Finance Analyst",
+  "jobTitle": "Fleet Analyst",
+  "worksFor": { "@type": "Organization", "name": "Tesla" },
   "email": "mailto:zerenlelaona99@gmail.com",
   "image": "https://zerenlelaona.github.io/headshot.jpg",
   "url": "https://zerenlelaona.github.io/",
@@ -44,33 +44,21 @@
 </script>
 
 <style>
+  /* Clean light theme: white, near-black, one red accent. Light only by design. */
   :root {
-    --bg: #fbfaf7;
-    --surface: #ffffff;
-    --ink: #1c2430;
-    --ink-soft: #57606e;
-    --accent: #0f6f5c;
-    --accent-bright: #0f8a70;
-    --accent-soft: #e3f0ec;
-    --line: #e6e3dc;
-    --tag-bg: #f1efe9;
-    --nav-bg: rgba(251, 250, 247, 0.88);
-    --serif: "Iowan Old Style", "Palatino", Palatino, Georgia, "Times New Roman", serif;
-    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #12161c;
-      --surface: #1a2028;
-      --ink: #e8e9eb;
-      --ink-soft: #a2abb6;
-      --accent: #4fc3a8;
-      --accent-bright: #5fd4b8;
-      --accent-soft: #17332c;
-      --line: #2a323d;
-      --tag-bg: #232b35;
-      --nav-bg: rgba(18, 22, 28, 0.88);
-    }
+    color-scheme: light;
+    --bg: #ffffff;
+    --surface: #f4f4f4;
+    --ink: #171a20;
+    --ink-soft: #5c5e62;
+    --accent: #d4202c;
+    --accent-soft: #fbeaeb;
+    --line: #e3e3e3;
+    --tag-bg: #f4f4f4;
+    --nav-bg: rgba(255, 255, 255, 0.92);
+    --sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    --serif: var(--sans);
+    --mono: var(--sans);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -79,411 +67,396 @@
     *, *::before, *::after { animation: none !important; transition: none !important; }
   }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--sans);
     background: var(--bg);
     color: var(--ink);
-    line-height: 1.7;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    font-variant-numeric: tabular-nums;
   }
-  ::selection { background: var(--accent); color: #fff; }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 0 1.4rem; }
+  ::selection { background: var(--ink); color: #fff; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 1.5rem; }
   a:focus-visible, button:focus-visible, summary:focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--ink);
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 2px;
   }
   .skip-link {
     position: absolute; left: -9999px; top: 0;
-    background: var(--accent); color: #fff;
-    padding: 0.5rem 1rem; z-index: 100; border-radius: 0 0 8px 0;
+    background: var(--ink); color: #fff;
+    padding: 0.5rem 1rem; z-index: 100;
   }
   .skip-link:focus { left: 0; }
-  .mono { font-family: var(--mono); }
 
   /* ---------- Scroll reveal ---------- */
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+  /* Shared small-caps label style */
+  .eyebrow, .sec-tag, .rating, .metric .lbl, .case .case-org, .case-stat, .case dt,
+  .ref-chip, .ref-note, .beyond.wide .tag-line, .job .when, .stop .yr, .stop .what .yr-inline,
+  .disclosure, .skill-group h3 {
+    font-family: var(--sans);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
 
   /* ---------- Nav ---------- */
   nav {
     position: sticky; top: 0; z-index: 50;
     background: var(--nav-bg);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--line);
   }
   .nav-inner {
-    max-width: 860px; margin: 0 auto; padding: 0.65rem 1.4rem;
-    display: flex; align-items: center; gap: 1rem;
+    max-width: 920px; margin: 0 auto; padding: 0.85rem 1.5rem;
+    display: flex; align-items: center; gap: 1.6rem;
   }
   .nav-logo {
-    font-weight: 800; font-size: 0.95rem; color: var(--accent);
-    text-decoration: none; letter-spacing: 0.02em; flex-shrink: 0;
+    font-weight: 700; font-size: 0.95rem; color: var(--ink);
+    text-decoration: none; letter-spacing: 0.12em; flex-shrink: 0;
   }
-  .nav-links { display: flex; gap: 1.05rem; overflow-x: auto; scrollbar-width: none; }
+  .nav-links { display: flex; gap: 1.4rem; overflow-x: auto; scrollbar-width: none; }
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-links a {
-    font-size: 0.82rem; font-weight: 550; color: var(--ink-soft);
+    font-size: 0.8rem; font-weight: 500; color: var(--ink-soft);
     text-decoration: none; white-space: nowrap;
-    padding-bottom: 2px; border-bottom: 2px solid transparent;
+    padding-bottom: 3px; border-bottom: 2px solid transparent;
+    transition: color 0.15s ease;
   }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); }
-  section, footer { scroll-margin-top: 4.2rem; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.active { color: var(--ink); border-bottom-color: var(--accent); }
+  section, footer { scroll-margin-top: 4.4rem; }
 
   /* ---------- Hero ---------- */
-  header { padding: 4.2rem 0 3.2rem; position: relative; overflow: hidden; }
-  .hero-chart {
-    position: absolute; right: -40px; bottom: -12px; width: 520px; max-width: 80%;
-    opacity: 0.10; pointer-events: none; color: var(--accent);
-  }
+  header { padding: 5rem 0 3.6rem; }
+  .hero-chart { display: none; }
   .eyebrow {
     display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    font-size: 0.72rem; font-weight: 600;
     color: var(--accent);
-    border: 1px solid var(--accent);
-    border-radius: 4px;
-    padding: 0.25rem 0.6rem;
-    margin-bottom: 1.1rem;
+    margin-bottom: 1.2rem;
   }
-  .hero-flex { display: flex; align-items: center; gap: 2.5rem; position: relative; }
+  .hero-flex { display: flex; align-items: center; gap: 3rem; }
   .hero-text { flex: 1; min-width: 0; }
   .headshot {
-    width: 210px; height: 210px;
+    width: 220px; height: 220px;
     object-fit: cover;
-    border-radius: 28px;
-    border: 1px solid var(--line);
+    border-radius: 6px;
     flex-shrink: 0;
-  }
-  h1 {
-    font-family: var(--serif);
-    font-size: clamp(2.5rem, 6.5vw, 3.9rem);
-    line-height: 1.06;
-    letter-spacing: -0.015em;
-    font-weight: 700;
-  }
-  .rating-row { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .rating {
-    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em;
-    border: 1px solid var(--line); border-radius: 6px;
-    padding: 0.3rem 0.65rem; color: var(--ink-soft);
     background: var(--surface);
   }
-  .rating b { color: var(--accent); font-weight: 700; }
+  h1 {
+    font-family: var(--sans);
+    font-size: clamp(2.6rem, 6.5vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+  }
+  .rating-row { margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .rating {
+    font-size: 0.68rem; font-weight: 500;
+    border: 1px solid var(--line); border-radius: 4px;
+    padding: 0.35rem 0.7rem; color: var(--ink-soft);
+    background: var(--bg);
+  }
+  .rating b { color: var(--ink); font-weight: 700; }
   .lede {
-    margin-top: 1.15rem;
-    font-size: 1.14rem;
+    margin-top: 1.4rem;
+    font-size: 1.1rem;
     color: var(--ink-soft);
-    max-width: 40em;
+    max-width: 38em;
   }
   .lede strong { color: var(--ink); font-weight: 600; }
   .status {
-    display: inline-flex; align-items: center; gap: 0.55rem;
-    margin-top: 1.4rem;
-    background: var(--accent-soft);
-    border-radius: 999px;
-    padding: 0.45rem 1.1rem;
-    font-size: 0.88rem; font-weight: 600; color: var(--accent);
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    margin-top: 1.6rem;
+    font-size: 0.9rem; font-weight: 500; color: var(--ink);
   }
   .status .dot {
     width: 8px; height: 8px; border-radius: 50%;
-    background: var(--accent);
+    background: var(--accent); flex-shrink: 0;
     animation: pulse 2.4s ease-in-out infinite;
   }
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
-  .cta-row { margin-top: 1.6rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .cta-row { margin-top: 1.8rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
   .btn {
     display: inline-block;
-    padding: 0.65rem 1.3rem;
-    border-radius: 999px;
-    font-size: 0.95rem;
+    min-width: 150px; text-align: center;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
     font-weight: 600;
+    letter-spacing: 0.02em;
     text-decoration: none;
     border: none;
     cursor: pointer;
     font-family: inherit;
-    transition: transform 0.12s ease, opacity 0.12s ease;
+    transition: background 0.15s ease, color 0.15s ease;
   }
-  .btn:hover { transform: translateY(-1px); opacity: 0.92; }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-ghost { border: 1.5px solid var(--line); color: var(--ink); background: transparent; }
+  .btn-primary { background: var(--ink); color: #fff; }
+  .btn-primary:hover { background: #393c41; }
+  .btn-ghost { background: var(--surface); color: var(--ink); }
+  .btn-ghost:hover { background: #e8e8e8; }
 
   @media (max-width: 680px) {
     .hero-flex { flex-direction: column-reverse; align-items: flex-start; gap: 1.75rem; }
-    .headshot { width: 132px; height: 132px; border-radius: 22px; }
-    header { padding-top: 2.6rem; }
-    .hero-chart { display: none; }
+    .headshot { width: 132px; height: 132px; }
+    header { padding-top: 2.8rem; }
+    .btn { min-width: 0; }
   }
 
   /* ---------- Metrics band ---------- */
   .metrics {
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    background: var(--surface);
   }
   .metrics-inner {
-    max-width: 860px; margin: 0 auto; padding: 1.6rem 1.4rem;
+    max-width: 920px; margin: 0 auto; padding: 2rem 1.5rem;
     display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem;
   }
-  @media (max-width: 860px) { .metrics-inner { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 860px) { .metrics-inner { grid-template-columns: repeat(3, 1fr); row-gap: 1.6rem; } }
   @media (max-width: 480px) { .metrics-inner { grid-template-columns: repeat(2, 1fr); } }
   .metric { text-align: center; }
   .metric .num {
-    font-family: var(--mono); font-size: 1.45rem; font-weight: 700; color: var(--accent);
-    letter-spacing: -0.02em; line-height: 1.2; white-space: nowrap;
+    font-size: 1.6rem; font-weight: 600; color: var(--ink);
+    letter-spacing: -0.02em; line-height: 1.15; white-space: nowrap;
   }
-  .metric .lbl { font-size: 0.72rem; color: var(--ink-soft); line-height: 1.35; margin-top: 0.25rem; }
+  .metric .lbl { font-size: 0.62rem; font-weight: 500; color: var(--ink-soft); line-height: 1.45; margin-top: 0.4rem; }
 
   /* ---------- Sections ---------- */
-  section { padding: 3.2rem 0; }
+  section { padding: 4rem 0; }
   section + section { border-top: 1px solid var(--line); }
   .sec-tag {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    font-size: 0.7rem; font-weight: 600;
     color: var(--accent);
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
   }
   h2 {
-    font-family: var(--serif);
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.4rem;
-    line-height: 1.2;
+    font-family: var(--sans);
+    font-size: clamp(1.6rem, 4vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.8rem;
+    line-height: 1.15;
   }
   p + p { margin-top: 0.9rem; }
   .muted { color: var(--ink-soft); }
 
   /* ---------- Thesis ---------- */
-  .thesis-intro { max-width: 44em; color: var(--ink-soft); }
-  .thesis-intro strong { color: var(--ink); }
-  .thesis-points { margin-top: 1.6rem; display: grid; gap: 0.9rem; }
+  .thesis-intro { max-width: 42em; color: var(--ink-soft); font-size: 1.04rem; }
+  .thesis-intro strong { color: var(--ink); font-weight: 600; }
+  .thesis-points { margin-top: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  @media (max-width: 760px) { .thesis-points { grid-template-columns: 1fr; } }
   .thesis-point {
-    display: flex; gap: 1.1rem; align-items: flex-start;
-    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
-    padding: 1.15rem 1.3rem;
+    background: var(--surface); border-radius: 6px;
+    padding: 1.5rem 1.4rem;
   }
   .thesis-point .n {
-    font-family: var(--mono); font-weight: 700; color: var(--accent);
-    font-size: 1.05rem; padding-top: 0.05rem;
+    display: block; font-weight: 600; color: var(--accent);
+    font-size: 0.8rem; letter-spacing: 0.1em; margin-bottom: 0.8rem;
   }
-  .thesis-point h3 { font-size: 1rem; font-weight: 650; margin-bottom: 0.2rem; }
-  .thesis-point p { font-size: 0.93rem; color: var(--ink-soft); }
+  .thesis-point .n::before { content: "0"; }
+  .thesis-point h3 { font-size: 1.02rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+  .thesis-point p { font-size: 0.92rem; color: var(--ink-soft); }
 
   /* ---------- Experience ---------- */
-  .xp { position: relative; padding-left: 1.7rem; }
+  .xp { position: relative; padding-left: 1.6rem; }
   .xp::before {
-    content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px;
-    width: 2px; background: var(--line);
+    content: ""; position: absolute; left: 4px; top: 12px; bottom: 12px;
+    width: 1px; background: var(--line);
   }
-  .job { position: relative; padding: 1.1rem 0; }
+  .job { position: relative; padding: 1.2rem 0; }
+  .job + .job { border-top: 1px solid var(--line); }
   .job::before {
-    content: ""; position: absolute; left: -1.7rem; top: 1.55rem;
-    width: 12px; height: 12px; border-radius: 50%;
-    background: var(--bg); border: 3px solid var(--accent);
+    content: ""; position: absolute; left: -1.6rem; top: 1.75rem;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--ink);
   }
+  .job:first-child::before { background: var(--accent); }
   .job-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: baseline; }
-  .job h3 { font-size: 1.08rem; font-weight: 650; }
-  .job .org { color: var(--accent); font-weight: 600; }
-  .job .when { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft); white-space: nowrap; }
-  .job p { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.96rem; max-width: 46em; }
+  .job h3 { font-size: 1.06rem; font-weight: 600; letter-spacing: -0.01em; }
+  .job .org { color: var(--ink); font-weight: 600; }
+  .job .when { font-size: 0.68rem; font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
+  .job p { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.95rem; max-width: 46em; }
 
   /* ---------- Case studies ---------- */
   .case {
     background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 1.4rem 1.5rem;
+    border-radius: 6px;
+    padding: 1.7rem 1.8rem;
   }
-  .case + .case { margin-top: 1.1rem; }
-  .case-top { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: baseline; }
-  .case h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; }
-  .case .case-org { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
-  .case-stats { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.9rem 0 0.9rem; }
+  .case + .case { margin-top: 1rem; }
+  .case-top { display: flex; justify-content: space-between; gap: 0.4rem 1rem; flex-wrap: wrap; align-items: baseline; }
+  .case h3 { font-family: var(--sans); font-size: 1.2rem; font-weight: 600; letter-spacing: -0.015em; }
+  .case .case-org { font-size: 0.64rem; font-weight: 600; color: var(--ink-soft); }
+  .case-stats { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 1rem 0; }
   .case-stat {
-    font-family: var(--mono); font-size: 0.75rem;
-    background: var(--accent-soft); color: var(--accent);
-    border-radius: 6px; padding: 0.3rem 0.6rem; font-weight: 600;
+    font-size: 0.64rem; font-weight: 600;
+    background: var(--bg); color: var(--ink);
+    border-radius: 3px; padding: 0.35rem 0.6rem;
   }
   .case dl { font-size: 0.94rem; }
   .case dt {
-    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
-    font-weight: 700; color: var(--ink-soft); margin-top: 0.65rem;
+    font-size: 0.62rem; font-weight: 700; color: var(--accent); margin-top: 0.9rem;
   }
-  .case dd { color: var(--ink-soft); margin-top: 0.1rem; }
+  .case dd { color: var(--ink-soft); margin-top: 0.15rem; }
   .case dd strong { color: var(--ink); font-weight: 600; }
-  .case details { margin-top: 0.9rem; border-top: 1px dashed var(--line); padding-top: 0.7rem; }
+  .case details { margin-top: 1rem; border-top: 1px solid #e0e0e0; padding-top: 0.8rem; }
   .case summary {
-    cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--accent);
-    list-style: none; display: inline-flex; align-items: center; gap: 0.4rem;
+    cursor: pointer; font-size: 0.86rem; font-weight: 600; color: var(--ink);
+    list-style: none; display: inline-flex; align-items: center; gap: 0.5rem;
   }
   .case summary::-webkit-details-marker { display: none; }
-  .case summary::before { content: "+"; font-family: var(--mono); font-weight: 700; }
-  .case details[open] summary::before { content: "–"; }
+  .case summary::before { content: "+"; font-weight: 600; color: var(--accent); width: 0.8em; }
+  .case details[open] summary::before { content: "\2212"; }
   .case details p { font-size: 0.9rem; color: var(--ink-soft); margin-top: 0.6rem; max-width: 46em; }
-  .ask {
-    margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft);
-  }
-  .ask::before { content: "→ "; color: var(--accent); }
+  .ask { margin-top: 1rem; font-size: 0.82rem; color: var(--ink-soft); }
+  .ask::before { content: "\2192  "; color: var(--accent); }
   .note-link {
-    display: inline-block; margin-top: 0.9rem;
-    font-size: 0.9rem; font-weight: 650; color: var(--accent); text-decoration: none;
-    border: 1.5px solid var(--accent); border-radius: 999px; padding: 0.45rem 1.05rem;
-    transition: transform 0.12s ease;
+    display: block; width: fit-content; max-width: 100%; margin-top: 0.7rem;
+    font-size: 0.86rem; font-weight: 600; color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid var(--ink); padding-bottom: 1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
   }
-  .note-link:hover { transform: translateY(-1px); }
+  .note-link:first-of-type { margin-top: 1.2rem; }
+  .note-link:hover { color: var(--accent); border-color: var(--accent); }
 
   /* ---------- Journey ---------- */
   .journey { display: grid; gap: 0; margin-top: 0.4rem; }
-  .stop { display: grid; grid-template-columns: 92px 24px 1fr; gap: 0 0.6rem; }
-  .stop .yr { font-family: var(--mono); font-size: 0.76rem; color: var(--ink-soft); text-align: right; padding-top: 0.2rem; }
+  .stop { display: grid; grid-template-columns: 92px 24px 1fr; gap: 0 0.7rem; }
+  .stop .yr { font-size: 0.66rem; font-weight: 600; color: var(--ink-soft); text-align: right; padding-top: 0.3rem; }
   .stop .track { position: relative; }
-  .stop .track::before { content: ""; position: absolute; left: 50%; transform: translateX(-50%); top: 0; bottom: 0; width: 2px; background: var(--line); }
+  .stop .track::before { content: ""; position: absolute; left: 50%; transform: translateX(-50%); top: 0; bottom: 0; width: 1px; background: var(--line); }
   .stop .track::after {
-    content: ""; position: absolute; left: 50%; top: 0.35rem; transform: translateX(-50%);
-    width: 10px; height: 10px; border-radius: 50%; background: var(--accent);
+    content: ""; position: absolute; left: 50%; top: 0.45rem; transform: translateX(-50%);
+    width: 9px; height: 9px; border-radius: 50%; background: var(--ink);
   }
-  .stop:first-child .track::before { top: 0.35rem; }
-  .stop:last-child .track::before { bottom: auto; height: 0.35rem; }
-  .stop .what { padding-bottom: 1.5rem; }
-  .stop h3 { font-size: 0.98rem; font-weight: 650; }
-  .stop h3 .place { color: var(--accent); }
+  .stop:last-child .track::after { background: var(--accent); }
+  .stop:first-child .track::before { top: 0.45rem; }
+  .stop:last-child .track::before { bottom: auto; height: 0.45rem; }
+  .stop .what { padding-bottom: 1.6rem; }
+  .stop h3 { font-size: 0.98rem; font-weight: 600; }
+  .stop h3 .place { color: var(--ink); }
   .stop p { font-size: 0.9rem; color: var(--ink-soft); max-width: 42em; margin-top: 0.15rem; }
   @media (max-width: 560px) {
     .stop { grid-template-columns: 20px 1fr; }
     .stop .yr { display: none; }
-    .stop .what .yr-inline { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); display: block; margin-bottom: 0.1rem; }
+    .stop .what .yr-inline { font-size: 0.64rem; font-weight: 600; color: var(--ink-soft); display: block; margin-bottom: 0.15rem; }
   }
   @media (min-width: 561px) { .yr-inline { display: none; } }
 
   /* ---------- Reference checks ---------- */
   .ref {
     background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 1.4rem 1.5rem 1.2rem;
-    position: relative;
+    border-radius: 6px;
+    padding: 1.7rem 1.8rem 1.4rem;
+    border-left: 3px solid var(--accent);
   }
-  .ref + .ref { margin-top: 1.1rem; }
-  .ref .qmark {
-    font-family: var(--serif); font-size: 3rem; line-height: 1;
-    color: var(--accent); opacity: 0.35; position: absolute; top: 0.7rem; left: 1.1rem;
-  }
+  .ref + .ref { margin-top: 1rem; }
+  .ref .qmark { display: none; }
   .ref blockquote {
-    font-size: 1.02rem; line-height: 1.75; color: var(--ink);
-    padding-left: 2.4rem; border: none; font-style: normal;
+    font-size: 1.02rem; line-height: 1.7; color: var(--ink);
+    border: none; font-style: normal;
   }
-  .ref blockquote strong { color: var(--accent); font-weight: 650; }
+  .ref blockquote strong { color: var(--ink); font-weight: 650; }
   .ref-foot {
     display: flex; justify-content: space-between; align-items: center;
-    gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem; padding-left: 2.4rem;
+    gap: 0.8rem; flex-wrap: wrap; margin-top: 1.1rem;
   }
   .ref-who { font-size: 0.88rem; }
-  .ref-who b { font-weight: 650; }
-  .ref-who a { color: inherit; text-decoration: none; }
-  .ref-who a:hover { color: var(--accent); }
+  .ref-who b { font-weight: 600; }
+  .ref-who a { color: inherit; text-decoration: none; border-bottom: 1px solid #c8c8c8; }
+  .ref-who a:hover { color: var(--accent); border-color: var(--accent); }
   .ref-who .role { color: var(--ink-soft); display: block; font-size: 0.8rem; }
   .ref-chip {
-    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em;
-    color: var(--accent); background: var(--accent-soft);
-    border-radius: 6px; padding: 0.3rem 0.6rem; font-weight: 600; white-space: nowrap;
+    font-size: 0.6rem; font-weight: 700;
+    color: var(--ink); background: var(--bg);
+    border-radius: 3px; padding: 0.35rem 0.6rem; white-space: nowrap;
   }
-  .ref-note { margin-top: 1rem; font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); }
+  .ref-note { margin-top: 1.1rem; font-size: 0.62rem; color: var(--ink-soft); }
 
   /* ---------- Cards / highlights ---------- */
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 1.1rem 1.2rem;
-  }
-  .card h3 { font-size: 0.98rem; font-weight: 650; margin-bottom: 0.3rem; }
+  .card { background: var(--surface); border-radius: 6px; padding: 1.4rem 1.4rem; }
+  .card h3 { font-size: 0.98rem; font-weight: 600; margin-bottom: 0.35rem; }
   .card p { font-size: 0.9rem; color: var(--ink-soft); }
 
   /* ---------- Tags ---------- */
-  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
   .tag {
-    background: var(--tag-bg);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 0.32rem 0.85rem;
-    font-size: 0.87rem;
+    background: var(--surface);
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.86rem;
     color: var(--ink);
   }
-  .tag.accent { background: var(--accent-soft); border-color: transparent; color: var(--accent); font-weight: 600; }
-  .skill-group { margin-bottom: 1.4rem; }
+  .tag.accent { background: var(--ink); color: #fff; font-weight: 500; }
+  .skill-group { margin-bottom: 1.6rem; }
   .skill-group:last-child { margin-bottom: 0; }
-  .skill-group h3 { font-size: 0.9rem; font-weight: 650; margin-bottom: 0.6rem; color: var(--ink-soft); }
+  .skill-group h3 { font-size: 0.64rem; font-weight: 700; margin-bottom: 0.7rem; color: var(--ink-soft); }
 
   /* ---------- Beyond ---------- */
-  .beyond-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
+  .beyond-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   @media (max-width: 640px) { .beyond-grid { grid-template-columns: repeat(2, 1fr); } }
   .beyond {
-    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
-    padding: 1.05rem 1.15rem;
-    transition: transform 0.15s ease, border-color 0.15s ease;
+    background: var(--surface); border-radius: 6px;
+    padding: 1.3rem 1.3rem;
   }
-  .beyond:hover { transform: translateY(-3px); border-color: var(--accent); }
-  .beyond .em { font-size: 1.4rem; display: block; margin-bottom: 0.35rem; }
-  .beyond h3 { font-size: 0.93rem; font-weight: 650; margin-bottom: 0.15rem; }
+  .beyond .em { font-size: 1.3rem; display: block; margin-bottom: 0.5rem; }
+  .beyond h3 { font-size: 0.93rem; font-weight: 600; margin-bottom: 0.2rem; }
   .beyond p { color: var(--ink-soft); font-size: 0.84rem; line-height: 1.55; }
   .beyond.wide {
     grid-column: 1 / -1;
-    border-left: 3px solid var(--accent);
-    display: flex; gap: 1rem; align-items: flex-start;
+    background: var(--ink); color: #fff;
+    display: flex; gap: 1.1rem; align-items: flex-start;
   }
-  .beyond.wide .em { font-size: 1.7rem; margin-bottom: 0; }
-  .beyond.wide p { font-size: 0.95rem; color: var(--ink); }
-  .beyond.wide .tag-line { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.25rem; }
+  .beyond.wide .em { font-size: 1.6rem; margin-bottom: 0; }
+  .beyond.wide p { font-size: 0.95rem; color: #fff; }
+  .beyond.wide .tag-line { font-size: 0.62rem; font-weight: 700; color: #ff6a72; display: block; margin-bottom: 0.35rem; }
 
   /* ---------- Contact ---------- */
   #contact { text-align: center; }
-  #contact .big { font-family: var(--serif); font-size: 1.9rem; font-weight: 700; margin-bottom: 0.4rem; }
-  #contact .sub { color: var(--ink-soft); max-width: 34em; margin: 0 auto 1.6rem; }
+  #contact .sec-tag { margin-bottom: 0.8rem; }
+  #contact .big { font-family: var(--sans); font-size: clamp(1.9rem, 5vw, 2.6rem); font-weight: 600; letter-spacing: -0.03em; margin-bottom: 0.6rem; }
+  #contact .sub { color: var(--ink-soft); max-width: 34em; margin: 0 auto 1.8rem; }
   .email-box {
-    display: inline-flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; justify-content: center;
+    display: inline-flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; justify-content: center;
     background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 0.8rem 1.1rem;
+    border-radius: 6px;
+    padding: 0.7rem 0.7rem 0.7rem 1.2rem;
   }
   .email-box a.email {
-    font-size: 1.05rem; font-weight: 650; color: var(--accent); text-decoration: none;
+    font-size: 1rem; font-weight: 600; color: var(--ink); text-decoration: none;
     word-break: break-all;
   }
-  .email-box a.email:hover { text-decoration: underline; }
+  .email-box a.email:hover { color: var(--accent); }
   .copy-btn {
-    background: var(--accent); color: #fff; border: none; cursor: pointer;
-    font-family: inherit; font-size: 0.82rem; font-weight: 650;
-    padding: 0.42rem 0.95rem; border-radius: 999px;
-    transition: opacity 0.12s ease;
+    background: var(--ink); color: #fff; border: none; cursor: pointer;
+    font-family: inherit; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em;
+    padding: 0.5rem 1.1rem; border-radius: 4px;
+    transition: background 0.15s ease;
   }
-  .copy-btn:hover { opacity: 0.9; }
-  .contact-alt { margin-top: 1.4rem; font-size: 0.95rem; }
-  .contact-alt a { color: var(--accent); font-weight: 600; text-decoration: none; }
-  .contact-alt a:hover { text-decoration: underline; }
+  .copy-btn:hover { background: #393c41; }
+  .contact-alt { margin-top: 1.5rem; font-size: 0.92rem; }
+  .contact-alt a { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--ink); }
+  .contact-alt a:hover { color: var(--accent); border-color: var(--accent); }
 
   /* ---------- Footer ---------- */
-  footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; text-align: center; }
-  .fineprint { font-size: 0.8rem; color: var(--ink-soft); }
+  footer { border-top: 1px solid var(--line); padding: 2.2rem 0 3rem; text-align: center; }
+  .fineprint { font-size: 0.78rem; color: var(--ink-soft); }
   .disclosure {
-    font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft);
-    max-width: 42em; margin: 0 auto 0.8rem; line-height: 1.6;
+    font-size: 0.6rem; color: var(--ink-soft);
+    max-width: 48em; margin: 0 auto 0.9rem; line-height: 1.8;
   }
 
   /* ---------- Print ---------- */
   @media print {
-    nav, .cta-row, .copy-btn, .status .dot, .hero-chart { display: none !important; }
-    body { background: #fff; color: #000; }
+    nav, .cta-row, .copy-btn, .status .dot { display: none !important; }
     section { padding: 1.2rem 0; }
     a { color: #000; text-decoration: none; }
     .reveal { opacity: 1 !important; transform: none !important; }
@@ -530,13 +503,13 @@
           I work at the intersection of <strong>investment analysis and financial operations</strong>:
           valuation and deal work on one side, fund controls and reporting on the other, with
           <strong>Python and SQL automation</strong> tying the two together. Experience at
-          Goldman Sachs Asset Management and ABN AMRO; MSc Finance &amp; Investments (Honours) from
+          Tesla, Goldman Sachs Asset Management and ABN AMRO; MSc Finance &amp; Investments (Honours) from
           Rotterdam School of Management.
         </p>
       </div>
       <img class="headshot" src="headshot.jpg" alt="Portrait of Zeren Lelaona" width="210" height="210">
     </div>
-    <div class="status"><span class="dot" aria-hidden="true"></span> Open to analyst roles across investment, valuation, fund finance &amp; data-driven finance</div>
+    <div class="status"><span class="dot" aria-hidden="true"></span> Currently Fleet Analyst at Tesla, Amsterdam</div>
     <div class="cta-row">
       <a class="btn btn-primary" href="#contact">Get in touch</a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/zerenlelaona/" target="_blank" rel="noopener">LinkedIn</a>
@@ -562,9 +535,9 @@
     <h2>Why this analyst</h2>
     <p class="thesis-intro">
       I grew up in Lembata, eastern Indonesia, where my family runs a food-distribution business. It is
-      where I learned what numbers mean when they belong to a real operation. Today I do that work
-      directly: I run the finance function for a small hospitality business, the pricing, the reporting
-      and the systems underneath it. Same instinct, with the training added.
+      where I learned what numbers mean when they belong to a real operation. Today I work inside one,
+      as a Fleet Analyst at Tesla in Amsterdam, and on the side I run the numbers for a small
+      hospitality business in Spain. Same instinct, with the training added.
       <strong>Owning financial performance, not just advising on it.</strong>
     </p>
     <div class="thesis-points">
@@ -604,6 +577,18 @@
     <h2>Experience</h2>
 
     <div class="xp">
+      <div class="job">
+        <div class="job-head">
+          <h3>Fleet Analyst · <span class="org">Tesla</span></h3>
+          <span class="when">Oct 2026–Present</span>
+        </div>
+        <p>
+          Amsterdam, Netherlands. Fleet operations and analytics for the service loaner fleet:
+          allocation across markets, the reporting behind it, and the KPIs that track utilization
+          and coverage.
+        </p>
+      </div>
+
       <div class="job">
         <div class="job-head">
           <h3>Finance and Commercial Analysis · <span class="org">Independent Projects</span></h3>
@@ -891,8 +876,16 @@
         <div class="what">
           <span class="yr-inline">2025</span>
           <h3><span class="place">Amsterdam, NL</span> · ABN AMRO, New Energies M&amp;A</h3>
-          <p>Off-cycle IB analyst: valuation and deal execution across the EU energy transition. Which brings us to now,
-          and to the next seat at that intersection of deals and operations.</p>
+          <p>Off-cycle IB analyst: valuation and deal execution across the EU energy transition.</p>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="yr">2026</div>
+        <div class="track"></div>
+        <div class="what">
+          <span class="yr-inline">2026</span>
+          <h3><span class="place">Amsterdam, NL</span> · Tesla</h3>
+          <p>Fleet Analyst, working on the operations and analytics of a vehicle fleet. Which brings us to now.</p>
         </div>
       </div>
     </div>
